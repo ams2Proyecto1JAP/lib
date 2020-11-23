@@ -1,6 +1,8 @@
-package duolingo.hibernate.util;
+package duolingo.lib.hibernate.util;
 
 import java.util.Properties;
+
+import duolingo.lib.model.*;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -34,7 +36,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 
                 
-                configuration.addAnnotatedClass(duolingo.model.Prueba.class);
+                configuration.addAnnotatedClass(UsersModel.class);
                 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
