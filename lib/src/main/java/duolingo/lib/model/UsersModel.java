@@ -1,5 +1,6 @@
 package duolingo.lib.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,6 +22,8 @@ public class UsersModel {
 	public UsersModel( String username) {
 		super();
 		this.username = username;
+		this.followers = new ArrayList<UsersModel>();
+		this.following = new ArrayList<UsersModel>();
 	}
 /*
 	@Column
@@ -62,9 +65,6 @@ public class UsersModel {
 	private AvtModel avt;*/
 	
 	@ManyToMany(mappedBy = "following", cascade = CascadeType.ALL)
-	@JoinTable(name="users_follow", 
-	                joinColumns={@JoinColumn(name="followed_id")}, 
-	                inverseJoinColumns={@JoinColumn(name="follower_id")})
 	private List<UsersModel> followers;
 	
 

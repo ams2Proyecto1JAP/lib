@@ -1,4 +1,5 @@
 package duolingo.lib.model;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,4 +25,16 @@ public class CrsModel {
 	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(name = "actual_crs")
 	private List<UsersModel> users;
+
+	public CrsModel(LangModel lang) {
+		super();
+		this.lang = lang;
+		this.categories = new ArrayList<CatModel>();
+		this.users = new ArrayList<UsersModel>();
+	}
+	
+	public void addCategory(CatModel cat)
+	{
+		this.categories.add(cat);
+	}
 }

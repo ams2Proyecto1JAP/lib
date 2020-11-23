@@ -8,6 +8,7 @@ public class CatId implements Serializable {
 	private int index;
 	private CrsModel crs;
 	
+	public CatId(){}
 	public CatId (int index, CrsModel crs)
 	{
 		this.index = index;

@@ -22,7 +22,7 @@ public class HibernateUtil {
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate?serverTimezone=UTC");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/duolingohibernate?serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "P@ssw0rd");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -37,6 +37,9 @@ public class HibernateUtil {
                 
                 
                 configuration.addAnnotatedClass(UsersModel.class);
+                configuration.addAnnotatedClass(CrsModel.class);
+                configuration.addAnnotatedClass(CatModel.class);
+                configuration.addAnnotatedClass(LangModel.class);
                 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

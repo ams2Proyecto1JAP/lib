@@ -14,6 +14,13 @@ public class CatModel {
 	@Column (name = "cat_index")
 	private int index;
 	
+	public CatModel(CrsModel crs, int index, String name, String image) {
+		super();
+		this.crs = crs;
+		this.index = index;
+		this.name = name;
+		this.image = image;
+	}
 	@Id
 	@ManyToOne
 	@JoinColumn (name = "crs_id")
