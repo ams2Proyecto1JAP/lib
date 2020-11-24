@@ -19,9 +19,14 @@ public class LeagueModel {
 	@Column (name = "max_points")
 	private int maxPoints;
 	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinColumn(name = "league_id")
+	@OneToMany (mappedBy = "league")
 	private List<UsersModel> users;
+	
+	public LeagueModel (String name, int maxPoints)
+	{
+		this.name = name;
+		this.maxPoints = maxPoints;
+	}
 	
 	
 	

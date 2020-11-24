@@ -22,19 +22,27 @@ public class CrsModel {
 	@JoinColumn(name = "crs_id")
 	private List<CatModel> categories;
 	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinColumn(name = "actual_crs")
-	private List<UsersModel> users;
+	@OneToMany (mappedBy = "actualCourse")
+	private List<UsersModel> actualUsers;
+	
+	@ManyToMany(mappedBy = "registeredCourses", cascade = CascadeType.ALL)
+	private List<UsersModel> registeredUsers;
 
 	public CrsModel(LangModel lang) {
 		super();
 		this.lang = lang;
 		this.categories = new ArrayList<CatModel>();
-		this.users = new ArrayList<UsersModel>();
+		this.actualUsers = new ArrayList<UsersModel>();
+		this.registeredUsers = new ArrayList<UsersModel>();		
 	}
 	
 	public void addCategory(CatModel cat)
 	{
 		this.categories.add(cat);
+	}
+	
+	public void registerUser(UsersModel usr)
+	{
+		this.registeredUsers.add(usr);
 	}
 }

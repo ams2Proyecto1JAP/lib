@@ -29,8 +29,13 @@ public class LangModel {
 	@OneToOne (mappedBy = "lang")
 	private CrsModel crs;
 	
-	@OneToMany (cascade = CascadeType.ALL)
-	@JoinColumn(name = "app_lang_id")
+	@OneToMany (mappedBy = "appLang")
 	private List<UsersModel> users;
+	
+	
+	public void addUser(UsersModel usr)
+	{
+		this.users.add(usr);
+	}
 	
 }

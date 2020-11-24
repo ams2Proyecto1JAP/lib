@@ -11,21 +11,28 @@ public class UsersModel {
 	
 	
 	@Id
-	@Column (name = "lang_id")
+	@Column (name = "usr_id")
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column
 	private String username;
 	
+	@OneToOne (mappedBy = "user")
+	private AvtModel avt;
+		
+	@ManyToOne
+	@JoinColumn (name = "app_lang_id")
+	private LangModel appLang;
 	
-	public UsersModel( String username) {
-		super();
-		this.username = username;
-		this.followers = new ArrayList<UsersModel>();
-		this.following = new ArrayList<UsersModel>();
-	}
-/*
+	@ManyToOne
+	@JoinColumn (name = "actual_crs")
+	private CrsModel actualCourse;
+	
+	@ManyToOne
+	@JoinColumn (name = "league_id")
+	private LeagueModel league;
+	
 	@Column
 	private String password;
 	@Column
@@ -48,21 +55,124 @@ public class UsersModel {
 
 	@Column
 	private int lifes;
-
-	@ManyToOne
-	@JoinColumn (name = "league_id")
-	private LeagueModel league;
-
-	@ManyToOne
-	@JoinColumn (name = "app_lang_id")
-	private LangModel lang;
-
-	@ManyToOne
-	@JoinColumn (name = "actual_crs")
-	private CrsModel actualCourse;
 	
-	@OneToOne (mappedBy = "user")
-	private AvtModel avt;*/
+	public UsersModel(String username) {
+		super();
+		this.username = username;
+		this.followers = new ArrayList<UsersModel>();
+		this.following = new ArrayList<UsersModel>();
+		this.registeredCourses = new ArrayList<CrsModel>();
+		this.dressesAdquired = new ArrayList<ShopItemsModel>();
+		this.categoriesRvd = new ArrayList<CatModel>();
+		this.levelsResolved = new ArrayList<LvlModel>();
+		this.exercicesResolved = new ArrayList<ExsModel>();
+		
+	}
+	
+	public void setAvt(AvtModel avt)
+	{
+		this.avt = avt;
+	}
+	public void setAppLang(LangModel lang) {
+		this.appLang = lang;
+	}
+	public void setActualCourse(CrsModel crs)
+	{
+		this.actualCourse = crs;
+	}
+	public void setLeague (LeagueModel league)
+	{
+		this.league = league;
+	}
+	
+	public void resolvedCategory(CatModel cat)
+	{
+		this.categoriesRvd.add(cat);
+	}
+	
+	public void resolvedLevel(LvlModel lvl)
+	{
+		this.levelsResolved.add(lvl);
+	}
+	public void resolvedExercice(ExsModel exs)
+	{
+		this.exercicesResolved.add(exs);
+	}
+	
+	
+
+	
+
+	
+	// Resolved funcionalities
+
+	
+		// Categories
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="cat_rvd", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={                		
+                			        @JoinColumn(name="cat_index", referencedColumnName="cat_index"),
+                			        @JoinColumn(name="crs_id", referencedColumnName="crs_id")
+                			        })
+	private List<CatModel> categoriesRvd;
+	
+	
+	
+
+		// Levels
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="lvl_rvd", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={ 
+                					@JoinColumn(name="lvl_index", referencedColumnName="lvl_index"),
+                			        @JoinColumn(name="cat_index", referencedColumnName="cat_index"),
+                			        @JoinColumn(name="crs_id", referencedColumnName="crs_id")
+                			        })
+	private List<LvlModel> levelsResolved;
+	
+		// Exercices
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="exs_rvd", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={ 
+                					@JoinColumn(name="exs_index", referencedColumnName="exs_index"),
+                					@JoinColumn(name="lvl_index", referencedColumnName="lvl_index"),
+                			        @JoinColumn(name="cat_index", referencedColumnName="cat_index"),
+                			        @JoinColumn(name="crs_id", referencedColumnName="crs_id")
+                			        })
+	private List<ExsModel> exercicesResolved;
+	
+	
+	
+	
+	// Compra de vestidos
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="usr_dresses", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={@JoinColumn(name="item_id")})
+	private List<ShopItemsModel> dressesAdquired;
+	
+	public void buyDress(ShopItemsModel dress)
+	{
+		this.dressesAdquired.add(dress);
+	}
+	
+	// Courses registrados
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="users_crs", 
+                joinColumns={@JoinColumn(name="user_id")}, 
+                inverseJoinColumns={@JoinColumn(name="crs_id")})
+	private List<CrsModel> registeredCourses;
+	
+	public void registerCourse(CrsModel crs)
+	{
+		this.registeredCourses.add(crs);
+	}
+	
+	// Follower functionality
 	
 	@ManyToMany(mappedBy = "following", cascade = CascadeType.ALL)
 	private List<UsersModel> followers;
