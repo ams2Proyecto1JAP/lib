@@ -20,6 +20,7 @@ public class AvtModel implements Serializable {
 	@Column
 	private String image;
 	
+	public AvtModel(){}
 	public AvtModel (UsersModel user, String imagePath)
 	{
 		this.image = imagePath;

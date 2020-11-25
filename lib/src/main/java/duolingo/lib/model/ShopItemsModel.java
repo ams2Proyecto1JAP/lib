@@ -31,6 +31,7 @@ public class ShopItemsModel {
 	@ManyToMany(mappedBy = "dressesAdquired", cascade = CascadeType.ALL)
 	private List<UsersModel> usersAdquired;
 
+	public ShopItemsModel(){}
 	public ShopItemsModel(int price, String image, String type, String name, String description) {
 		super();
 		this.price = price;

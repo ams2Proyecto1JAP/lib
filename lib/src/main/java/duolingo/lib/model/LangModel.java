@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table (name = "lang")
 public class LangModel {
 	
+	public LangModel() {}
 	public LangModel(String cod) {
 		super();
 		this.cod = cod;
@@ -36,6 +37,10 @@ public class LangModel {
 	public void addUser(UsersModel usr)
 	{
 		this.users.add(usr);
+	}
+	public int getId()
+	{
+		return this.id;
 	}
 	
 }

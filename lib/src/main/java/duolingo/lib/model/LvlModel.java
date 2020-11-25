@@ -33,7 +33,7 @@ public class LvlModel {
 	@ManyToMany(mappedBy = "levelsResolved")
 	private List<UsersModel> usersRvd;
 	
-	
+	public LvlModel(){}
 	public LvlModel(CatModel cat, int index) {
 		super();
 		this.cat = cat;

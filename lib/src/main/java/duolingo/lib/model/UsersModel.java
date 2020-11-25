@@ -56,6 +56,7 @@ public class UsersModel {
 	@Column
 	private int lifes;
 	
+	public UsersModel(){}
 	public UsersModel(String username) {
 		super();
 		this.username = username;
@@ -98,7 +99,10 @@ public class UsersModel {
 	{
 		this.exercicesResolved.add(exs);
 	}
-	
+	public int getId()
+	{
+		return this.id;
+	}
 	
 
 	
@@ -195,4 +199,5 @@ public class UsersModel {
 	{
 		this.followers.add(follower);
 	}
+	
 }

@@ -3,6 +3,8 @@ package duolingo.lib.hibernate.test;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import duolingo.lib.dao.implementations.*;
+import duolingo.lib.dao.interfaces.*;
 import duolingo.lib.hibernate.util.HibernateUtil;
 import duolingo.lib.model.*;
 
@@ -140,6 +142,14 @@ public class test {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        
+        ILang langDao = new LangImpl();
+        LangModel lang = langDao.getLangById(1);
+        System.out.println(lang.getId());
+        
+        ICat catDao = new CatImpl();
+        CatModel cat = catDao.getCatByIndex(course1, 2);
+        System.out.println(cat.getName());
 
 	}
 

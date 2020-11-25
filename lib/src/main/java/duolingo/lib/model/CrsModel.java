@@ -28,6 +28,7 @@ public class CrsModel {
 	@ManyToMany(mappedBy = "registeredCourses", cascade = CascadeType.ALL)
 	private List<UsersModel> registeredUsers;
 
+	public CrsModel() {}
 	public CrsModel(LangModel lang) {
 		super();
 		this.lang = lang;

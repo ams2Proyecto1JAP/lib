@@ -30,7 +30,7 @@ public class ExsModel {
 	@ManyToMany(mappedBy = "exercicesResolved")
 	private List<UsersModel> usersRvd;
 	
-	
+	public ExsModel(){}
 	public ExsModel(LvlModel lvl, int index) {
 		super();
 		this.lvl = lvl;

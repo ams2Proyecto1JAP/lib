@@ -33,6 +33,7 @@ public class CatModel {
 	@ManyToMany(mappedBy = "categoriesRvd")
 	private List<UsersModel> usersRvd;
 	
+	public CatModel(){}
 	public CatModel(CrsModel crs, int index, String name, String image) {
 		super();
 		this.crs = crs;
@@ -50,5 +51,9 @@ public class CatModel {
 	public void addUserRvd(UsersModel usr)
 	{
 		this.usersRvd.add(usr);
+	}
+	public String getName()
+	{
+		return this.name;
 	}
 }

@@ -22,6 +22,7 @@ public class LeagueModel {
 	@OneToMany (mappedBy = "league")
 	private List<UsersModel> users;
 	
+	public LeagueModel(){}
 	public LeagueModel (String name, int maxPoints)
 	{
 		this.name = name;
