@@ -43,7 +43,7 @@ public class test {
 		item1.userBuy(user2);
 		
 		
-		CrsModel course1 = new CrsModel(lang1);
+		CrsModel course1 = new CrsModel(lang1, lang1);
 		user1.setActualCourse(course1);
 		user1.registerCourse(course1);
 		course1.registerUser(user1);

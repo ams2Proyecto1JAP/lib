@@ -47,4 +47,28 @@ public class LvlModel {
 	{
 		this.usersRvd.add(usr);
 	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	public CatModel getCat() {
+		return cat;
+	}
+	public void setCat(CatModel cat) {
+		this.cat = cat;
+	}
+	public List<ExsModel> getExercices() {
+		return exercices;
+	}
+	public void setExercices(List<ExsModel> exercices) {
+		this.exercices = exercices;
+	}
+	public List<UsersModel> getUsersRvd() {
+		return usersRvd;
+	}
+	public void setUsersRvd(List<UsersModel> usersRvd) {
+		this.usersRvd = usersRvd;
+	}
 }

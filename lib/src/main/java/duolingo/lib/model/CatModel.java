@@ -52,8 +52,40 @@ public class CatModel {
 	{
 		this.usersRvd.add(usr);
 	}
-	public String getName()
-	{
-		return this.name;
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	public CrsModel getCrs() {
+		return crs;
+	}
+	public void setCrs(CrsModel crs) {
+		this.crs = crs;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public List<LvlModel> getLevels() {
+		return levels;
+	}
+	public void setLevels(List<LvlModel> levels) {
+		this.levels = levels;
+	}
+	public List<UsersModel> getUsersRvd() {
+		return usersRvd;
+	}
+	public void setUsersRvd(List<UsersModel> usersRvd) {
+		this.usersRvd = usersRvd;
 	}
 }

@@ -42,4 +42,22 @@ public class ExsModel {
 	{
 		this.usersRvd.add(usr);
 	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	public LvlModel getLvl() {
+		return lvl;
+	}
+	public void setLvl(LvlModel lvl) {
+		this.lvl = lvl;
+	}
+	public List<UsersModel> getUsersRvd() {
+		return usersRvd;
+	}
+	public void setUsersRvd(List<UsersModel> usersRvd) {
+		this.usersRvd = usersRvd;
+	}
 }

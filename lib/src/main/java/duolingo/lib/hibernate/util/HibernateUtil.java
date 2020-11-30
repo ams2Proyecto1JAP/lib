@@ -24,7 +24,7 @@ public class HibernateUtil {
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mysql://localhost:3306/duolingotest?serverTimezone=UTC");
                 settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "P@ssw0rd");
+                settings.put(Environment.PASS, "Poncho87");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
                 settings.put(Environment.SHOW_SQL, "true");

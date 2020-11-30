@@ -26,5 +26,16 @@ public class AvtModel implements Serializable {
 		this.image = imagePath;
 		this.user = user;
 	}
-
+	public UsersModel getUser() {
+		return user;
+	}
+	public void setUser(UsersModel user) {
+		this.user = user;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 }
