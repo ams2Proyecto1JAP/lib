@@ -10,6 +10,8 @@ import duolingo.lib.model.id.CatId;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -66,6 +68,17 @@ public class CatImpl implements ICat {
 		}
 		
 		
+	}
+
+	@Override
+	public int getCountCategoriesByCrs(CrsModel crs) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query queryNumCats = session.createQuery("select count(*) from cat where crs_id="+crs.getId()+";");
+			return (int) queryNumCats.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	

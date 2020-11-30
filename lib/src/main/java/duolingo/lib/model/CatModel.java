@@ -44,6 +44,15 @@ public class CatModel {
 		this.usersRvd = new ArrayList<UsersModel>();
 	}
 	
+	public CatModel(CrsModel crs, int index, String name) {
+		super();
+		this.crs = crs;
+		this.index = index;
+		this.name = name;
+		this.levels = new ArrayList<LvlModel>();
+		this.usersRvd = new ArrayList<UsersModel>();
+	}
+	
 	public void addLevel(LvlModel lvl) {
 		this.levels.add(lvl);
 	}

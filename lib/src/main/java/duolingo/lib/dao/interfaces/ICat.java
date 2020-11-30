@@ -10,4 +10,5 @@ public interface ICat {
 	public CatModel getCatByIndex(CrsModel crs, int index);
 	public boolean saveCat(CatModel Cat);
 	public ArrayList<CatModel> getAllCategoriesByCrs(CrsModel crs);
+	public int getCountCategoriesByCrs(CrsModel crs);
 }
