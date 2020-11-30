@@ -3,11 +3,17 @@ package duolingo.lib.dao.implementations;
 import duolingo.lib.dao.interfaces.ICat;
 import duolingo.lib.model.CatModel;
 import duolingo.lib.model.CrsModel;
+import duolingo.lib.model.LangModel;
 import duolingo.lib.model.UsersModel;
 import duolingo.lib.model.id.CatId;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import duolingo.lib.hibernate.util.HibernateUtil;
 
@@ -42,6 +48,22 @@ public class CatImpl implements ICat {
             e.printStackTrace();
             return false;
         }
+		
+		
+	}
+
+	@Override
+	public ArrayList<CatModel> getAllCategoriesByCrs(CrsModel crs) {
+		
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			 
+			List<CatModel> cats = session.createSQLQuery("select * from cat where crs_id="+crs.getId()+";").addEntity(CatModel.class).list();
+
+			return new ArrayList<CatModel>(cats);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		
 		
 	}

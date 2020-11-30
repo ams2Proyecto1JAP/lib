@@ -18,7 +18,7 @@ public class CatModel {
 	private int index;
 	
 	@Id
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn (name = "crs_id")
 	private CrsModel crs;	
 	

@@ -1,5 +1,7 @@
 package duolingo.lib.hibernate.test;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -103,10 +105,10 @@ public class test {
         try( Session session = HibernateUtil.getSessionFactory().openSession() )
         {            
         	
-            t = session.beginTransaction();
+            //t = session.beginTransaction();
             
             
-            
+            /*
             session.save(lang1);
             
             session.save(course1);
@@ -136,13 +138,15 @@ public class test {
             
             session.save(item1);
             session.save(item2);
+            */
             
-            t.commit();
+            //t.commit();
             
         }catch(Exception e) {
             e.printStackTrace();
         }
-        
+        ICat catDao = new CatImpl();
+        /*
         ILang langDao = new LangImpl();
         LangModel lang = langDao.getLangById(1);
         System.out.println(lang.getId());
@@ -150,6 +154,19 @@ public class test {
         ICat catDao = new CatImpl();
         CatModel cat = catDao.getCatByIndex(course1, 2);
         System.out.println(cat.getName());
+        */
+        
+        ICrs crsDAO = new CrsImpl();
+        CrsModel crsss = crsDAO.getCrsById(1);
+        ArrayList<CatModel> cats = catDao.getAllCategoriesByCrs(crsss);
+        System.out.println(cats.size());
+        
+        for (CatModel c : cats)
+        {
+        	System.out.println(c.getName());
+        }
+        
+        
 
 	}
 
