@@ -26,10 +26,10 @@ public class TestEsp17 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LangModel castellano = new LangModel("es");
-		LangModel frances = new LangModel("fr");
-		LangModel ingles = new LangModel("eng");
-		LangModel aleman = new LangModel("de");
+		LangModel castellano = new LangModel("español", "es-ES");
+		LangModel frances = new LangModel("frances", "fr-FR");
+		LangModel ingles = new LangModel("ingles", "en-US");
+		LangModel aleman = new LangModel("aleman", "al-AL");
 		
 		CrsModel crsEsFr = new CrsModel(castellano, frances);
 		CrsModel crsEsEng = new CrsModel(castellano, ingles);

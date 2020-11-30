@@ -8,9 +8,10 @@ import javax.persistence.*;
 public class LangModel {
 	
 	public LangModel() {}
-	public LangModel(String cod) {
+	public LangModel(String nombre, String locale) {
 		super();
-		this.cod = cod;
+		this.nombre = nombre;
+		this.locale = locale;
 		users = new ArrayList<UsersModel>();
 		crsLangOrigin = new ArrayList<CrsModel>();
 		crsLangDestiny = new ArrayList<CrsModel>();
@@ -23,7 +24,10 @@ public class LangModel {
 	private int id;
 	
 	@Column
-	private String cod;
+	private String nombre;
+
+	@Column
+	private String locale;
 	
 	@OneToMany (mappedBy = "appLang")
 	private List<UsersModel> users;
@@ -58,11 +62,17 @@ public class LangModel {
 	public void setCrsLangDestiny(List<CrsModel> crsLangDestiny) {
 		this.crsLangDestiny = crsLangDestiny;
 	}
-	public String getCod() {
-		return cod;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setCod(String cod) {
-		this.cod = cod;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getLocale() {
+		return locale;
+	}
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 	public List<UsersModel> getUsers() {
 		return users;

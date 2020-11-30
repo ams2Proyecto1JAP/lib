@@ -25,7 +25,7 @@ public class test {
 		user1.followUser(user2);
 		user2.followUser(user1);
 		
-		LangModel lang1 = new LangModel("Castellano");
+		LangModel lang1 = new LangModel("Castellano", "es-ES");
 		user1.setAppLang(lang1);
 		
 		LeagueModel league1 = new LeagueModel("Bronce", 500);
