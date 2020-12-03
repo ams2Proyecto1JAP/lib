@@ -100,6 +100,8 @@ public class test {
 		user2.resolvedExercice(cat2lvl1ex1);
 		cat1lvl1ex1.addUserRvd(user2);
 		*/
+		
+		/*
 		 ICrs crsDAO = new CrsImpl();
 		CrsModel crsss = crsDAO.getCrsById(1);
 		System.out.println(crsss.getId());
@@ -118,6 +120,7 @@ public class test {
 		cat1.addLevel(cat1lvl3);
 		cat2.addLevel(cat2lvl1);
 		cat2.addLevel(cat2lvl2);
+		*/ 
 		
 		Transaction t = null;
         try( Session session = HibernateUtil.getSessionFactory().openSession() )
@@ -172,8 +175,9 @@ public class test {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        ICat catDao = new CatImpl();
         /*
+        ICat catDao = new CatImpl();
+       
         ILang langDao = new LangImpl();
         LangModel lang = langDao.getLangById(1);
         System.out.println(lang.getId());
@@ -181,7 +185,7 @@ public class test {
         ICat catDao = new CatImpl();
         CatModel cat = catDao.getCatByIndex(course1, 2);
         System.out.println(cat.getName());
-        */
+        
         
        
         
@@ -193,7 +197,7 @@ public class test {
         }
         
         
-        
+        */
 
 	}
 

@@ -26,6 +26,8 @@ public class LvlModel {
 		    })
 	private CatModel cat;	
 	
+	@Column
+	private String name;
 	
 	@OneToMany (mappedBy = "lvl")
 	private List<ExsModel> exercices;
@@ -34,10 +36,11 @@ public class LvlModel {
 	private List<UsersModel> usersRvd;
 	
 	public LvlModel(){}
-	public LvlModel(CatModel cat, int index) {
+	public LvlModel(CatModel cat, int index, String name) {
 		super();
 		this.cat = cat;
 		this.index = index;
+		this.name = name;
 		this.exercices = new ArrayList<ExsModel>();
 		this.usersRvd = new ArrayList<UsersModel>();
 		
@@ -70,5 +73,11 @@ public class LvlModel {
 	}
 	public void setUsersRvd(List<UsersModel> usersRvd) {
 		this.usersRvd = usersRvd;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }
