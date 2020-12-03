@@ -9,7 +9,7 @@ public interface ILvl {
 
 	public LvlModel getLvlByIndex(CatModel cat, int index);
 
-	public ArrayList<LvlModel> getAllLevelsByCat(CatModel crs);
+	public ArrayList<LvlModel> getAllLevelsByCat(CatModel cat);
 
 	public boolean saveLvl(LvlModel lvl);
 }
