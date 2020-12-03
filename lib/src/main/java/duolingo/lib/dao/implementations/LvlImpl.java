@@ -44,11 +44,12 @@ public class LvlImpl implements ILvl {
 	}
 
 	@Override
-	public ArrayList<CatModel> getAllLevelsByCrs(CatModel cat) {
+	public ArrayList<LvlModel> getAllLevelsByCat(CatModel cat) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			List<CatModel> cats = session.createSQLQuery("select * from lvl where cat_index=" + cat.getIndex() + ";")
-					.addEntity(CatModel.class).list();
-			return new ArrayList<CatModel>(cats);
+			
+			List<LvlModel> lvls = session.createSQLQuery("select * from lvl where cat_index = " + cat.getIndex()+ " and crs_id = " + cat.getCrs().getId() + ";")
+					.addEntity(LvlModel.class).list();
+			return new ArrayList<LvlModel>(lvls);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

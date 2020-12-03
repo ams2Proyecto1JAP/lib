@@ -20,7 +20,7 @@ public class CrsModel {
 	@JoinColumn (name = "lang_destiny_id")
 	private LangModel langDestiny;
 	
-	@OneToMany (cascade = CascadeType.ALL)
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "crs_id")
 	private List<CatModel> categories;
 	

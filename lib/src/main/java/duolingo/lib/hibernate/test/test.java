@@ -15,7 +15,7 @@ public class test {
 
 	public static void main(String[] args) {
 		
-		
+		/*
 		UsersModel user1 = new UsersModel("user1");
 		UsersModel user2 = new UsersModel("user2");
 		
@@ -52,8 +52,7 @@ public class test {
 		user2.registerCourse(course1);
 		course1.registerUser(user2);
 		
-		CatModel cat1 = new CatModel(course1, 1, "categoria1", "imagePath1");
-		CatModel cat2 = new CatModel(course1, 2, "categoria2", "imagePath2");
+		
 		
 		course1.addCategory(cat1);
 		course1.addCategory(cat2);
@@ -100,21 +99,49 @@ public class test {
 		
 		user2.resolvedExercice(cat2lvl1ex1);
 		cat1lvl1ex1.addUserRvd(user2);
+		*/
+		 ICrs crsDAO = new CrsImpl();
+		CrsModel crsss = crsDAO.getCrsById(1);
+		System.out.println(crsss.getId());
+		CatModel cat1 = new CatModel(crsss, 1, "categoria1", "imagePath1");
+		CatModel cat2 = new CatModel(crsss, 2, "categoria2", "imagePath2");
+		crsss.addCategory(cat1);
+		crsss.addCategory(cat2);
+		
+		LvlModel cat1lvl1 = new LvlModel(cat1, 1);
+		LvlModel cat1lvl2 = new LvlModel(cat1, 2);
+		LvlModel cat1lvl3 = new LvlModel(cat1, 3);
+		LvlModel cat2lvl1 = new LvlModel(cat2, 1);
+		LvlModel cat2lvl2 = new LvlModel(cat2, 2);
+		cat1.addLevel(cat1lvl1);
+		cat1.addLevel(cat1lvl2);
+		cat1.addLevel(cat1lvl3);
+		cat2.addLevel(cat2lvl1);
+		cat2.addLevel(cat2lvl2);
 		
 		Transaction t = null;
         try( Session session = HibernateUtil.getSessionFactory().openSession() )
         {            
         	
-            //t = session.beginTransaction();
-            
-            
+            t = session.beginTransaction();
             /*
+            session.save(cat1);
+            session.save(cat2);
+            session.save(crsss);
+            
+            session.save(cat1lvl1);
+            session.save(cat1lvl2);
+            session.save(cat1lvl3);
+            session.save(cat2lvl1);
+            session.save(cat2lvl2);
+            
+            
+            
             session.save(lang1);
             
             session.save(course1);
             
-            session.save(cat1);
-            session.save(cat2);
+            
             session.save(user1);
             session.save(user2);
             session.save(cat1lvl1);
@@ -140,7 +167,7 @@ public class test {
             session.save(item2);
             */
             
-            //t.commit();
+            t.commit();
             
         }catch(Exception e) {
             e.printStackTrace();
@@ -156,15 +183,15 @@ public class test {
         System.out.println(cat.getName());
         */
         
-        ICrs crsDAO = new CrsImpl();
-        CrsModel crsss = crsDAO.getCrsById(1);
-        ArrayList<CatModel> cats = catDao.getAllCategoriesByCrs(crsss);
-        System.out.println(cats.size());
+       
         
-        for (CatModel c : cats)
-        {
-        	System.out.println(c.getName());
+        
+        ILvl lvlDAO = new LvlImpl();
+        ArrayList<LvlModel>Levels =lvlDAO.getAllLevelsByCat(cat1);
+        for(LvlModel lm: Levels ) {
+        	System.out.println(lm.getIndex());
         }
+        
         
         
 
