@@ -27,14 +27,24 @@ public class ExsModel {
 		    })
 	private LvlModel lvl;	
 	
+	@Column 
+	private String content;
+	
+	
+	@ManyToOne 
+	@JoinColumn (name = "exs_type")
+	private ExsTypeModel exsType;
+	
 	@ManyToMany(mappedBy = "exercicesResolved")
 	private List<UsersModel> usersRvd;
 	
 	public ExsModel(){}
-	public ExsModel(LvlModel lvl, int index) {
+	public ExsModel(LvlModel lvl, int index, ExsTypeModel exsType, String content) {
 		super();
 		this.lvl = lvl;
 		this.index = index;
+		this.exsType = exsType;
+		this.content = content;
 		this.usersRvd = new ArrayList<UsersModel>();
 	}
 	
@@ -59,5 +69,17 @@ public class ExsModel {
 	}
 	public void setUsersRvd(List<UsersModel> usersRvd) {
 		this.usersRvd = usersRvd;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public ExsTypeModel getExsType() {
+		return exsType;
+	}
+	public void setExsType(ExsTypeModel exsType) {
+		this.exsType = exsType;
 	}
 }

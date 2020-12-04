@@ -122,6 +122,10 @@ public class test {
 		cat2.addLevel(cat2lvl2);
 		*/ 
 		
+		
+		
+		
+		
 		Transaction t = null;
         try( Session session = HibernateUtil.getSessionFactory().openSession() )
         {            
@@ -175,15 +179,25 @@ public class test {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        /*
-        ICat catDao = new CatImpl();
-       
-        ILang langDao = new LangImpl();
-        LangModel lang = langDao.getLangById(1);
-        System.out.println(lang.getId());
         
+        
+        ExsTypeModel exsTest;
+		IExsType exsTypeDAO = new ExsTypeImpl();
+		
+		
+		exsTest = exsTypeDAO.getExsTypeByType("testType");
+		
+		
         ICat catDao = new CatImpl();
-        CatModel cat = catDao.getCatByIndex(course1, 2);
+        ICrs crsDao = new CrsImpl();
+        IExs exsDAO = new ExsImpl();
+        
+        CrsModel crs1 = crsDao.getCrsById(1);
+       
+      
+        
+      
+        CatModel cat = catDao.getCatByIndex(crs1, 1);
         System.out.println(cat.getName());
         
         
@@ -191,13 +205,18 @@ public class test {
         
         
         ILvl lvlDAO = new LvlImpl();
-        ArrayList<LvlModel>Levels =lvlDAO.getAllLevelsByCat(cat1);
+        ArrayList<LvlModel>Levels =lvlDAO.getAllLevelsByCat(cat);
         for(LvlModel lm: Levels ) {
         	System.out.println(lm.getIndex());
         }
         
+        ExsModel exs = new ExsModel(Levels.get(0), 1, exsTest, null);
+        exsDAO.saveExs(exs);
         
-        */
+        System.out.println(exsDAO.getExsByIndex(Levels.get(0), 1).getExsType().getType());
+       
+        
+        
 
 	}
 
