@@ -2,12 +2,16 @@ package duolingo.lib.dao.implementations;
 
 import duolingo.lib.dao.interfaces.IExs;
 import duolingo.lib.model.ExsModel;
+import duolingo.lib.model.LangModel;
 import duolingo.lib.model.LvlModel;
 import duolingo.lib.model.CatModel;
 import duolingo.lib.model.CrsModel;
 import duolingo.lib.model.UsersModel;
 import duolingo.lib.model.id.CatId;
 import duolingo.lib.model.id.ExsId;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -49,7 +53,21 @@ public class ExsImpl implements IExs {
 		
 	}
 
+	@Override
+	public ArrayList<ExsModel> getAllExercicesByLvl(LvlModel lvl) {
+		
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			 
+			List<ExsModel> exs = session.createCriteria(ExsModel.class).list();
 
+			return new ArrayList<ExsModel>(exs);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
 	
 
 	
