@@ -58,7 +58,8 @@ public class ExsImpl implements IExs {
 		
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			 
-			List<ExsModel> exs = session.createCriteria(ExsModel.class).list();
+			List<ExsModel> exs = session.createSQLQuery("select * from exs where crs_id="+lvl.getCat().getCrs().getId()
+					+ " and cat_index = " + lvl.getCat().getIndex() + " and lvl_index = " + lvl.getIndex()).addEntity(ExsModel.class).list();
 
 			return new ArrayList<ExsModel>(exs);
 		} catch (Exception e) {
