@@ -16,7 +16,7 @@ public class test {
 	public static void main(String[] args) {
 		
 		
-		
+		//Ejemplos modelo
 		
 		UsersModel user1 = new UsersModel("user1");
 		UsersModel user2 = new UsersModel("user2");
@@ -118,7 +118,7 @@ public class test {
             
             session.save(cat1);
             session.save(cat2);
-            
+            session.save(exsTypeTest);
             
             session.save(cat1lvl1);
             session.save(cat1lvl2);
@@ -164,8 +164,36 @@ public class test {
             e.printStackTrace();
         }
         
+        // Ejemplos dao
+       
+        ExsTypeModel exsTest;
+		IExsType exsTypeDAO = new ExsTypeImpl();
+		
+		
+		exsTest = exsTypeDAO.getExsTypeByType("testType");
+		
+		
+        ICat catDao = new CatImpl();
+        ICrs crsDao = new CrsImpl();
+        IExs exsDAO = new ExsImpl();
+        
+        CrsModel crs1 = crsDao.getCrsById(1);
+       
+      
+        
+      
+        CatModel cat = catDao.getCatByIndex(crs1, 1);
+        System.out.println(cat.getName());
+        
+        
        
         
+        
+        ILvl lvlDAO = new LvlImpl();
+        ArrayList<LvlModel>Levels =lvlDAO.getAllLevelsByCat(cat);
+        for(LvlModel lm: Levels ) {
+        	System.out.println(lm.getIndex());
+        }
         
 
 	}
