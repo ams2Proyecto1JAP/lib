@@ -15,6 +15,7 @@ public class test {
 
 	public static void main(String[] args) {
 		
+		//Ejemplos modelos 
 		
 		UsersModel user1 = new UsersModel("user1");
 		UsersModel user2 = new UsersModel("user2");
@@ -105,10 +106,10 @@ public class test {
         try( Session session = HibernateUtil.getSessionFactory().openSession() )
         {            
         	
-            //t = session.beginTransaction();
+            t = session.beginTransaction();
             
             
-            /*
+            
             session.save(lang1);
             
             session.save(course1);
@@ -138,23 +139,25 @@ public class test {
             
             session.save(item1);
             session.save(item2);
-            */
             
-            //t.commit();
+            
+            t.commit();
             
         }catch(Exception e) {
             e.printStackTrace();
         }
+        
+        // Ejemplos dao
         ICat catDao = new CatImpl();
-        /*
+        
         ILang langDao = new LangImpl();
         LangModel lang = langDao.getLangById(1);
         System.out.println(lang.getId());
         
-        ICat catDao = new CatImpl();
+        
         CatModel cat = catDao.getCatByIndex(course1, 2);
         System.out.println(cat.getName());
-        */
+        
         
         ICrs crsDAO = new CrsImpl();
         CrsModel crsss = crsDAO.getCrsById(1);
