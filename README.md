@@ -1,5 +1,4 @@
 
-#INSTRUCCIONES DE INSTALACIÓN Y USO DE DESKTOP#
 
 -----------------------------------------------------
 ****DESCARGAR EL CODIGO FUENTE DE LA APPLICACION****:
