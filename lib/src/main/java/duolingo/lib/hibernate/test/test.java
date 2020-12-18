@@ -13,6 +13,7 @@ public class test {
 
 	public static void main(String[] args) {
 		
+		// Test modelos y relaciones
 		
 		UsersModel user1 = new UsersModel("user1");
 		UsersModel user2 = new UsersModel("user2");
@@ -142,6 +143,8 @@ public class test {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        
+        // Test dao
         
         ILang langDao = new LangImpl();
         LangModel lang = langDao.getLangById(1);
