@@ -15,7 +15,8 @@ public class test {
 
 	public static void main(String[] args) {
 		
-		/*
+		// Modelos ejemplo
+		
 		UsersModel user1 = new UsersModel("user1");
 		UsersModel user2 = new UsersModel("user2");
 		
@@ -52,16 +53,17 @@ public class test {
 		user2.registerCourse(course1);
 		course1.registerUser(user2);
 		
-		
+		CatModel cat1 = new CatModel(course1, 1, "categoria1", "imagePath1");
+		CatModel cat2 = new CatModel(course1, 2, "categoria2", "imagePath2");
 		
 		course1.addCategory(cat1);
 		course1.addCategory(cat2);
 		
-		LvlModel cat1lvl1 = new LvlModel(cat1, 1);
-		LvlModel cat1lvl2 = new LvlModel(cat1, 2);
-		LvlModel cat1lvl3 = new LvlModel(cat1, 3);
-		LvlModel cat2lvl1 = new LvlModel(cat2, 1);
-		LvlModel cat2lvl2 = new LvlModel(cat2, 2);
+		LvlModel cat1lvl1 = new LvlModel(cat1, 1, "nivel1");
+		LvlModel cat1lvl2 = new LvlModel(cat1, 2, "nivel2");
+		LvlModel cat1lvl3 = new LvlModel(cat1, 3, "nivel3");
+		LvlModel cat2lvl1 = new LvlModel(cat2, 1, "nivel1");
+		LvlModel cat2lvl2 = new LvlModel(cat2, 2, "nivel2");
 		
 		cat1.addLevel(cat1lvl1);
 		cat1.addLevel(cat1lvl2);
@@ -69,12 +71,14 @@ public class test {
 		cat2.addLevel(cat2lvl1);
 		cat2.addLevel(cat2lvl2);
 		
-		ExsModel cat1lvl1ex1 = new ExsModel(cat1lvl1, 1);
-		ExsModel cat1lvl1ex2 = new ExsModel(cat1lvl1, 2);
-		ExsModel cat1lvl1ex3 = new ExsModel(cat1lvl1, 3);
-		ExsModel cat1lvl2ex1 = new ExsModel(cat1lvl2, 1);
-		ExsModel cat2lvl1ex1 = new ExsModel(cat2lvl1, 1);
-		ExsModel cat2lvl1ex2 = new ExsModel(cat2lvl1, 2);
+		ExsTypeModel exsTypeTest = new ExsTypeModel ("testType");
+		
+		ExsModel cat1lvl1ex1 = new ExsModel(cat1lvl1, 1, exsTypeTest, "json");
+		ExsModel cat1lvl1ex2 = new ExsModel(cat1lvl1, 2, exsTypeTest, "json");
+		ExsModel cat1lvl1ex3 = new ExsModel(cat1lvl1, 3, exsTypeTest, "json");
+		ExsModel cat1lvl2ex1 = new ExsModel(cat1lvl2, 1, exsTypeTest, "json");
+		ExsModel cat2lvl1ex1 = new ExsModel(cat2lvl1, 1, exsTypeTest, "json");
+		ExsModel cat2lvl1ex2 = new ExsModel(cat2lvl1, 2, exsTypeTest, "json");
 		
 		
 		
@@ -99,28 +103,21 @@ public class test {
 		
 		user2.resolvedExercice(cat2lvl1ex1);
 		cat1lvl1ex1.addUserRvd(user2);
-		*/
 		
-		/*
-		 ICrs crsDAO = new CrsImpl();
-		CrsModel crsss = crsDAO.getCrsById(1);
-		System.out.println(crsss.getId());
-		CatModel cat1 = new CatModel(crsss, 1, "categoria1", "imagePath1");
-		CatModel cat2 = new CatModel(crsss, 2, "categoria2", "imagePath2");
-		crsss.addCategory(cat1);
-		crsss.addCategory(cat2);
 		
-		LvlModel cat1lvl1 = new LvlModel(cat1, 1);
-		LvlModel cat1lvl2 = new LvlModel(cat1, 2);
-		LvlModel cat1lvl3 = new LvlModel(cat1, 3);
-		LvlModel cat2lvl1 = new LvlModel(cat2, 1);
-		LvlModel cat2lvl2 = new LvlModel(cat2, 2);
+		
+		
+		
+		course1.addCategory(cat1);
+		course1.addCategory(cat2);
+		
+		
 		cat1.addLevel(cat1lvl1);
 		cat1.addLevel(cat1lvl2);
 		cat1.addLevel(cat1lvl3);
 		cat2.addLevel(cat2lvl1);
 		cat2.addLevel(cat2lvl2);
-		*/ 
+		
 		
 		
 		
@@ -131,10 +128,10 @@ public class test {
         {            
         	
             t = session.beginTransaction();
-            /*
+            
+            session.save(exsTypeTest);
             session.save(cat1);
             session.save(cat2);
-            session.save(crsss);
             
             session.save(cat1lvl1);
             session.save(cat1lvl2);
@@ -172,7 +169,7 @@ public class test {
             
             session.save(item1);
             session.save(item2);
-            */
+            
             
             t.commit();
             
@@ -180,6 +177,8 @@ public class test {
             e.printStackTrace();
         }
         
+        
+        // Test dao
         
         ExsTypeModel exsTest;
 		IExsType exsTypeDAO = new ExsTypeImpl();
@@ -210,10 +209,7 @@ public class test {
         	System.out.println(lm.getIndex());
         }
         
-        ExsModel exs = new ExsModel(Levels.get(0), 1, exsTest, null);
-        exsDAO.saveExs(exs);
         
-        System.out.println(exsDAO.getExsByIndex(Levels.get(0), 1).getExsType().getType());
        
         
         
